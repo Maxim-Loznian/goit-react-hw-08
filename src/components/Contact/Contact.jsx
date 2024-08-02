@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Contact.module.css';  // Змінити імпорт CSS
+import styles from './Contact.module.css';
 
 const Contact = ({ id, name, number, onDeleteContact }) => (
   <li className={styles.contact}>
