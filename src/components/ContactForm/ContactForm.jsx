@@ -2,6 +2,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
 import styles from './ContactForm.module.css';
 
 const validationSchema = Yup.object({
@@ -15,7 +17,9 @@ const validationSchema = Yup.object({
     .required('Обов\'язкове поле'),
 });
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -23,7 +27,7 @@ const ContactForm = ({ onAddContact }) => {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      onAddContact({ ...values, id: nanoid() });
+      dispatch(addContact({ ...values, id: nanoid() }));
       resetForm();
     },
   });
@@ -40,7 +44,9 @@ const ContactForm = ({ onAddContact }) => {
           onBlur={formik.handleBlur}
           className={formik.touched.name && formik.errors.name ? styles.error : ''}
         />
-        {formik.touched.name && formik.errors.name ? <div className={styles.errorMessage}>{formik.errors.name}</div> : null}
+        {formik.touched.name && formik.errors.name ? (
+          <div className={styles.errorMessage}>{formik.errors.name}</div>
+        ) : null}
       </label>
       <label>
         Number
@@ -52,7 +58,9 @@ const ContactForm = ({ onAddContact }) => {
           onBlur={formik.handleBlur}
           className={formik.touched.number && formik.errors.number ? styles.error : ''}
         />
-        {formik.touched.number && formik.errors.number ? <div className={styles.errorMessage}>{formik.errors.number}</div> : null}
+        {formik.touched.number && formik.errors.number ? (
+          <div className={styles.errorMessage}>{formik.errors.number}</div>
+        ) : null}
       </label>
       <button type="submit">Add contact</button>
     </form>
