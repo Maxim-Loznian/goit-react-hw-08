@@ -8,7 +8,7 @@ import filtersReducer from './filtersSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['contacts'], // Персистити тільки контакти
+  whitelist: ['items'], // Персистити тільки масив контактів
 };
 
 // Обгортання редюсерів у персистенційний редюсер
