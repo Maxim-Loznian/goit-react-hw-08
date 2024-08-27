@@ -1,7 +1,8 @@
+// src/components/Contact/Contact.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contactsOps'; // Оновлений імпорт
 import styles from './Contact.module.css';
 
 const Contact = ({ id, name, number }) => {
