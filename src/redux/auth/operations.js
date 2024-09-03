@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'https://your-api-url.com/api';
+const BASE_URL = 'https://connections-api.goit.global/';
 
 export const register = createAsyncThunk('auth/register', async (userData) => {
   const response = await axios.post(`${BASE_URL}/register`, userData);
