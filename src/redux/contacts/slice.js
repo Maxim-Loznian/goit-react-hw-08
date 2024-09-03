@@ -1,6 +1,5 @@
-// src/redux/contactsSlice.js
-import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialState = {
   items: [],
@@ -8,13 +7,12 @@ const initialState = {
   error: null,
 };
 
-// Створення слайсу контактів
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, (state) => {
+      .addCase(fetchContacts.pending, state => {
         state.loading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -26,7 +24,7 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(addContact.pending, (state) => {
+      .addCase(addContact.pending, state => {
         state.loading = true;
       })
       .addCase(addContact.fulfilled, (state, action) => {
@@ -38,7 +36,7 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(deleteContact.pending, (state) => {
+      .addCase(deleteContact.pending, state => {
         state.loading = true;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
@@ -52,15 +50,5 @@ const contactsSlice = createSlice({
       });
   },
 });
-
-// Мемоізований селектор для фільтрації контактів
-export const selectFilteredContacts = createSelector(
-  [state => state.contacts.items, state => state.filters.name],
-  (contacts, filter) => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
 
 export default contactsSlice.reducer;
