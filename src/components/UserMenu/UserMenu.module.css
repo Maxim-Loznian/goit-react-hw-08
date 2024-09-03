@@ -1,0 +1,15 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.userName {
+  font-weight: bold;
+}
+.logoutButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}

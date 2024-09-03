@@ -1,64 +1,53 @@
-// src/components/RegistrationForm/RegistrationForm.jsx
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import styles from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const [credentials, setCredentials] = useState({ name: '', email: '', password: '' });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(register(credentials));
+    dispatch(register({ name, email, password }));
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.formTitle}>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.inputGroup}>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={credentials.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className={styles.inputGroup}>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={credentials.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className={styles.inputGroup}>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className={styles.submitButton}>Register</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <label className={styles.label}>
+        Name
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className={styles.input}
+          required
+        />
+      </label>
+      <label className={styles.label}>
+        Email
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className={styles.input}
+          required
+        />
+      </label>
+      <label className={styles.label}>
+        Password
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
+          required
+        />
+      </label>
+      <button type="submit" className={styles.button}>Register</button>
+    </form>
   );
 };
 
