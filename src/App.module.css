@@ -107,10 +107,6 @@ h1 {
     background-color: #0056b3;
   }
 
-  .mainContent {
-    text-align: center;
-  }
-
   h1 {
     margin-bottom: 20px;
   }
@@ -134,8 +130,4 @@ h1 {
 
 .navButton:hover {
   background-color: #0056b3;
-}
-
-.mainContent {
-  text-align: center;
 }
