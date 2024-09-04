@@ -1,5 +1,7 @@
-import axios from '../../api/axios';
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+const BASE_URL = 'https://connections-api.goit.global';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
@@ -9,7 +11,7 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thu
   }
 
   try {
-    const response = await axios.get('/contacts', {
+    const response = await axios.get(`${BASE_URL}/contacts`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -28,7 +30,7 @@ export const addContact = createAsyncThunk('contacts/add', async (contact, thunk
   }
 
   try {
-    const response = await axios.post('/contacts', contact, {
+    const response = await axios.post(`${BASE_URL}/contacts`, contact, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,7 +49,7 @@ export const deleteContact = createAsyncThunk('contacts/delete', async (contactI
   }
 
   try {
-    await axios.delete(`/contacts/${contactId}`, {
+    await axios.delete(`${BASE_URL}/contacts/${contactId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -66,7 +68,7 @@ export const updateContact = createAsyncThunk('contacts/update', async ({ contac
   }
 
   try {
-    const response = await axios.patch(`/contacts/${contactId}`, contact, {
+    const response = await axios.patch(`${BASE_URL}/contacts/${contactId}`, contact, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

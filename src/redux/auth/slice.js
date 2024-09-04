@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logOut, fetchCurrentUser } from './operations';
+import { clearContacts } from '../contacts/slice';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -13,6 +14,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.isLoggedIn = true;
       state.token = action.payload.token;
+      localStorage.setItem('token', action.payload.token); // Зберегти токен
     },
   },
   extraReducers: (builder) => {
@@ -21,22 +23,25 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
+        localStorage.setItem('token', action.payload.token); // Зберегти токен
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.token = action.payload.token;
+        localStorage.setItem('token', action.payload.token); // Зберегти токен
       })
       .addCase(logOut.fulfilled, (state, { dispatch }) => {
         state.user = null;
         state.isLoggedIn = false;
         state.token = null;
-        dispatch(clearContacts()); // Clear contacts when logging out
+        localStorage.removeItem('token'); // Видалити токен
+        dispatch(clearContacts()); // Очистити контакти при виході
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
-        state.token = localStorage.getItem('token');
+        state.token = localStorage.getItem('token'); // Отримати токен з localStorage
       });
   },
 });
