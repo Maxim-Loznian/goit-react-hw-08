@@ -5,3 +5,15 @@
   background-color: #f8f9fa;
   align-items: center; /* Вертикальне вирівнювання всіх елементів всередині header */
 }
+
+.header .logoutButton {
+  /* Специфічний клас для кнопки "Log out" */
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  align-self: center; /* Центрує кнопку по вертикалі */
+}

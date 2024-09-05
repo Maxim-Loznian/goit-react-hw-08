@@ -1,8 +1,9 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 15px; /* Відступи між полями форми та кнопкою */
-  max-width: 400px; /* Обмежує максимальну ширину форми */
+  max-width: 600px; /* Обмежує максимальну ширину форми */
   margin: 20px auto;
 }
 

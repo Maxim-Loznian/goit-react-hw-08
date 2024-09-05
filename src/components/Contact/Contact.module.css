@@ -1,12 +1,17 @@
 .contact {
   display: flex;
-  justify-content: space-between; /* Вирівнює текст і кнопку по краях */
-  align-items: center; /* Вирівнює текст і кнопку по вертикалі */
+  justify-content: space-between; /* Розміщення елементів зліва і справа */
+  align-items: center; /* Вертикальне вирівнювання */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 10px; /* Відступ між контактами */
-  width: 100%; /* Ширина контакту займає всю доступну ширину контейнера */
+  width: 100%; /* Щоб контакт займав всю доступну ширину контейнера */
+  box-sizing: border-box; /* Включає padding і border в ширину і висоту */
+}
+
+.contactText {
+  flex: 1; /* Текст займає всю доступну ширину, залишаючи місце для кнопки справа */
 }
 
 button {

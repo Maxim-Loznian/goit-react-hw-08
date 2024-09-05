@@ -8,6 +8,20 @@
   margin: 0;
 }
 
+.content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Центрує контент по горизонталі */
+  align-items: center; /* Центрує контент по вертикалі */
+}
+
+.container {
+  max-width: 1000px; /* Ширина контейнера */
+  width: 100%; /* Щоб займати всю доступну ширину */
+  box-sizing: border-box; /* Включає padding і border в ширину та висоту */
+}
+
 .header {
   background-color: #007bff;
   color: #fff;
@@ -18,14 +32,6 @@
 .header h1 {
   margin: 0;
   font-size: 1.5rem;
-}
-
-.content {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  justify-content: center; /* Центрує контент по горизонталі */
-  align-items: center; /* Центрує контент по вертикалі */
 }
 
 .footer {
@@ -40,11 +46,30 @@
 }
 
 /* Стилі для всіх інпутів */
+/* Стилі для всіх інпутів */
 input {
   width: 100%; /* Займає всю доступну ширину батьківського елемента */
-  max-width: 400px; /* Обмежує максимальну ширину */
+  max-width: 800px; /* Обмежує максимальну ширину */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box; /* Включає padding і border в ширину та висоту */
+}
+
+button {
+  border-radius: 4px;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
