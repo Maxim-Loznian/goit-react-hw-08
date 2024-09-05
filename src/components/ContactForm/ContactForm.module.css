@@ -26,7 +26,6 @@ button {
   color: white;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 15px; /* Відступ між кнопкою та інпутами */
 }
 
 button:hover {
