@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
+import styles from './ContactForm.module.css'; // Імпортуйте стилі
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const ContactForm = () => {
 
   return (
     <Formik initialValues={{ name: '', number: '' }} onSubmit={handleSubmit}>
-      <Form>
+      <Form className={styles.contactForm}>
         <label>
           Name
           <Field type="text" name="name" />

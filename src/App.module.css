@@ -1,133 +1,52 @@
 /* App.module.css */
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.app {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem 0;
-}
-
-.navLink {
-  margin-left: 1rem;
-  text-decoration: none;
-  color: #007bff;
-}
-
-.navLink:hover {
-  text-decoration: underline;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-/* App.module.css */
-
 .appContainer {
-  padding: 20px; /* src/App.module.css */
-
-  .app {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-  }
-
-  .navButton {
-    margin-left: 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .navButton:hover {
-    background-color: #0056b3;
-  }
-
-  h1 {
-    margin-bottom: 20px;
-  }
+  font-family: "Arial", sans-serif;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
 }
 
 .header {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-}
-
-.navButton {
-  margin-left: 10px;
-  padding: 10px 20px;
-  border: none;
   background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
 }
 
-.navButton:hover {
-  background-color: #0056b3;
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Центрує контент по горизонталі */
+  align-items: center; /* Центрує контент по вертикалі */
+}
+
+.footer {
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Стилі для всіх інпутів */
+input {
+  width: 100%; /* Займає всю доступну ширину батьківського елемента */
+  max-width: 400px; /* Обмежує максимальну ширину */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Включає padding і border в ширину та висоту */
 }

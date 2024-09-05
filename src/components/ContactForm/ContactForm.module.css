@@ -1,9 +1,17 @@
+/* ContactForm.module.css */
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Відступи між полями форми та кнопкою */
+  min-width: 400px;
   max-width: 400px;
   margin: 20px auto;
+}
+
+label {
+  display: flex;
+  flex-direction: column; /* Розміщує інпут під текстом мітки */
 }
 
 input {
@@ -19,6 +27,7 @@ button {
   color: white;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 15px; /* Відступ між кнопкою та інпутами */
 }
 
 button:hover {

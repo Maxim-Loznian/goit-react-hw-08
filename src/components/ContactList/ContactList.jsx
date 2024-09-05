@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selectors';
-import { selectFilter } from '../../redux/filters/selectors';
+import { selectNameFilter } from '../../redux/filters/selectors';
 import toast from 'react-hot-toast';
+import styles from './ContactList.module.css'; // Імпортуйте стилі
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  const filter = useSelector(selectNameFilter) || ''; // Перевірка на undefined
   const dispatch = useDispatch();
 
   const filteredContacts = contacts.filter(contact =>
@@ -21,11 +22,13 @@ const ContactList = () => {
   };
 
   return (
-    <ul>
+    <ul className={styles.contactList}>
       {filteredContacts.map(({ id, name, number }) => (
-        <li key={id}>
-          {name}: {number}
-          <button onClick={() => handleDelete(id)}>Delete</button>
+        <li key={id} className={styles.contactListItem}>
+          <span>{name}: {number}</span>
+          <button className={styles.contactListButton} onClick={() => handleDelete(id)}>
+            Delete
+          </button>
         </li>
       ))}
     </ul>
