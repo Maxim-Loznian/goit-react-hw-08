@@ -1,9 +1,7 @@
-/* ContactList.module.css */
-
 .contactList {
   list-style: none;
   padding: 0;
-  max-width: 400px; /* Ширина повинна бути така ж, як у форми */
+  max-width: 400px; /* Ширина повинна відповідати ширині форми */
   margin: 20px auto;
 }
 
@@ -16,6 +14,7 @@
   border-radius: 4px;
   margin-bottom: 10px; /* Відступ між контактами */
   width: 100%; /* Щоб контакт займав всю доступну ширину контейнера */
+  box-sizing: border-box; /* Включає padding і border в ширину та висоту */
 }
 
 button {
@@ -23,6 +22,7 @@ button {
   border: none;
   color: red;
   cursor: pointer;
+  padding: 5px;
 }
 
 button:hover {

@@ -21,10 +21,7 @@ const App = () => {
             <Route path="/contacts" element={<PrivateRoute component={<ContactsPage />} />} />
           </Routes>
         </main>
-        <footer className={styles.footer}>
-          <p>&copy; 2024 My Application</p>
-        </footer>
-      </Layout>
+       </Layout>
     </div>
   );
 };

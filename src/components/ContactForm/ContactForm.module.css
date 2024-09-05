@@ -1,11 +1,8 @@
-/* ContactForm.module.css */
-
 .form {
   display: flex;
   flex-direction: column;
   gap: 15px; /* Відступи між полями форми та кнопкою */
-  min-width: 400px;
-  max-width: 400px;
+  max-width: 400px; /* Обмежує максимальну ширину форми */
   margin: 20px auto;
 }
 
@@ -18,6 +15,7 @@ input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box; /* Включає padding і border в ширину та висоту */
 }
 
 button {

@@ -4,6 +4,7 @@
   gap: 16px;
   width: 100%;
   max-width: 400px;
+  margin: 0 auto; /* Центрує форму по горизонталі */
 }
 
 .label {
@@ -13,10 +14,13 @@
 }
 
 .input {
-  padding: 8px;
+  padding: 12px; /* Збільшує padding всередині інпутів */
   margin-top: 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 16px; /* Збільшує шрифт всередині інпутів */
+  box-sizing: border-box;
+  width: 100%; /* Займає всю доступну ширину контейнера */
 }
 
 .button {
@@ -27,4 +31,12 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  text-align: center; /* Центрує текст всередині кнопки */
+  align-self: center; /* Центрує кнопку по горизонталі */
+  width: 100%; /* Розтягує кнопку на всю ширину контейнера */
+  max-width: 200px; /* Обмежує максимальну ширину кнопки */
+}
+
+.button:hover {
+  background-color: #0056b3;
 }

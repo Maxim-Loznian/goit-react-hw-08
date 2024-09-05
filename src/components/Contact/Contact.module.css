@@ -1,10 +1,12 @@
 .contact {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Вирівнює текст і кнопку по краях */
+  align-items: center; /* Вирівнює текст і кнопку по вертикалі */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 10px; /* Відступ між контактами */
+  width: 100%; /* Ширина контакту займає всю доступну ширину контейнера */
 }
 
 button {
