@@ -1,12 +1,11 @@
 // src/redux/auth/slice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logOut, fetchCurrentUser } from './operations';
-import { clearContacts } from '../contacts/slice';
 
 const initialState = {
   user: null,
   isLoggedIn: false,
-  token: null,
+  token: localStorage.getItem('token') || null,
 };
 
 const authSlice = createSlice({
