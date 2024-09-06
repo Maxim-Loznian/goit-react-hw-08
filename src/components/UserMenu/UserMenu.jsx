@@ -1,3 +1,4 @@
+// src/components/UserMenu/UserMenu.jsx
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
@@ -7,14 +8,20 @@ const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
-  const handleLogOut = () => {
-    dispatch(logOut());
+  const handleLogOut = async () => {
+    try {
+      await dispatch(logOut()).unwrap();
+    } catch (error) {
+      console.error('Failed to log out:', error.message);
+    }
   };
 
   return (
     <div className={styles.userMenu}>
       <span className={styles.userName}>{user.name}</span>
-      <button onClick={handleLogOut} className={styles.logoutButton}>Log Out</button>
+      <button onClick={handleLogOut} className={styles.logoutButton}>
+        Log Out
+      </button>
     </div>
   );
 };

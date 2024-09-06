@@ -31,9 +31,26 @@ export const logOut = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {
     try {
-      await axios.post(`${BASE_URL}/users/logout`);
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+
+      if (!token) {
+        return thunkAPI.rejectWithValue('No token found');
+      }
+
+      await axios.post(`${BASE_URL}/users/logout`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      localStorage.removeItem('token');
+      return; // Повертає нічого, оскільки вихід успішний
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      // Перевірка наявності `error.response` та `error.response.data`
+      return thunkAPI.rejectWithValue(
+        error.response ? error.response.data.message : error.message
+      );
     }
   }
 );
