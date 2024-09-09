@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFilter, selectNameFilter } from '../../redux/filters/slice'; // Вірний імпорт
+import { changeFilter } from '../../redux/filters/slice'; // Використовується редюсер
+import { selectNameFilter } from '../../redux/filters/selectors'; // Оновлений імпорт
 import styles from './SearchBox.module.css';
 
 const SearchBox = () => {
-  const value = useSelector(selectNameFilter);
+  const value = useSelector(selectNameFilter); // Використовуємо селектор
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -13,8 +14,7 @@ const SearchBox = () => {
 
   return (
     <div className={styles.searchBox}>
-      <label>
-        Find contacts by name
+      <label>Find contacts by name
         <input type="text" value={value} onChange={handleChange} />
       </label>
     </div>

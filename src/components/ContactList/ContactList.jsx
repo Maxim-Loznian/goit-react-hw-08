@@ -1,18 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
-import { selectContacts } from '../../redux/contacts/selectors';
-import { selectNameFilter } from '../../redux/filters/selectors';
+import { selectFilteredContacts } from '../../redux/contacts/selectors'; // Оновлений імпорт
 import toast from 'react-hot-toast';
-import styles from './ContactList.module.css'; // Імпортуйте стилі
+import styles from './ContactList.module.css';
 
 const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectNameFilter) || ''; // Перевірка на undefined
+  const contacts = useSelector(selectFilteredContacts); // Використовуємо селектор
   const dispatch = useDispatch();
-
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
 
   const handleDelete = id => {
     dispatch(deleteContact(id))
@@ -23,12 +17,10 @@ const ContactList = () => {
 
   return (
     <ul className={styles.contactList}>
-      {filteredContacts.map(({ id, name, number }) => (
+      {contacts.map(({ id, name, number }) => (
         <li key={id} className={styles.contactListItem}>
           <span>{name}: {number}</span>
-          <button className={styles.contactListButton} onClick={() => handleDelete(id)}>
-            Delete
-          </button>
+          <button className={styles.contactListButton} onClick={() => handleDelete(id)}>Delete</button>
         </li>
       ))}
     </ul>
