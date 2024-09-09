@@ -10,7 +10,7 @@ export const register = createAsyncThunk(
       const response = await axios.post(`${BASE_URL}/users/signup`, userData);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response ? error.response.data.message : error.message);
     }
   }
 );
@@ -22,7 +22,7 @@ export const login = createAsyncThunk(
       const response = await axios.post(`${BASE_URL}/users/login`, userData);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response ? error.response.data.message : error.message);
     }
   }
 );
@@ -44,19 +44,15 @@ export const logOut = createAsyncThunk(
         },
       });
 
-      localStorage.removeItem('token');
       return; // Повертає нічого, оскільки вихід успішний
     } catch (error) {
-      // Перевірка наявності `error.response` та `error.response.data`
-      return thunkAPI.rejectWithValue(
-        error.response ? error.response.data.message : error.message
-      );
+      return thunkAPI.rejectWithValue(error.response ? error.response.data.message : error.message);
     }
   }
 );
 
-export const fetchCurrentUser = createAsyncThunk(
-  'auth/fetchCurrentUser',
+export const refreshUser = createAsyncThunk(
+  'auth/refreshUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
@@ -73,7 +69,7 @@ export const fetchCurrentUser = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response ? error.response.data.message : error.message);
     }
   }
 );

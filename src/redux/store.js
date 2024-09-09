@@ -21,7 +21,13 @@ const rootReducer = {
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['auth/register/fulfilled', 'auth/login/fulfilled', 'auth/logOut/fulfilled', 'auth/refreshUser/fulfilled'],
+        ignoredPaths: ['auth.token'], // Додайте інші шляхи, якщо потрібно
+      },
+    }),
 });
 
-// Налаштування persistStore
 export const persistor = persistStore(store);
