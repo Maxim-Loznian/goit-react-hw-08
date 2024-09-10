@@ -3,6 +3,16 @@ import axios from 'axios';
 
 const BASE_URL = 'https://connections-api.goit.global';
 
+// Функція для встановлення заголовка авторизації
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+// Функція для очищення заголовка авторизації
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
 export const register = createAsyncThunk(
   'auth/register',
   async (userData, thunkAPI) => {
@@ -20,6 +30,7 @@ export const login = createAsyncThunk(
   async (userData, thunkAPI) => {
     try {
       const response = await axios.post(`${BASE_URL}/users/login`, userData);
+      setAuthHeader(response.data.token); // Встановлюємо заголовок після успішного входу
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -32,6 +43,7 @@ export const logOut = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await axios.post(`${BASE_URL}/users/logout`);
+      clearAuthHeader(); // Очищуємо заголовок після виходу
       return; // Повертає нічого, так як немає даних
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -50,9 +62,8 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      const response = await axios.get(`${BASE_URL}/users/current`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      setAuthHeader(token); // Встановлюємо заголовок для запиту
+      const response = await axios.get(`${BASE_URL}/users/current`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

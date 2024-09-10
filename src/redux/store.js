@@ -5,14 +5,14 @@ import authReducer from './auth/slice';
 import contactsReducer from './contacts/slice';
 import filtersReducer from './filters/slice';
 
-const persistConfig = {
-  key: 'root',
+const authPersistConfig = {
+  key: 'auth',
   storage,
-  whitelist: ['auth'], // Зберігайте лише auth
+  whitelist: ['token'], // Зберігайте лише token
 };
 
 const rootReducer = {
-  auth: persistReducer(persistConfig, authReducer),
+  auth: persistReducer(authPersistConfig, authReducer),
   contacts: contactsReducer,
   filters: filtersReducer,
 };

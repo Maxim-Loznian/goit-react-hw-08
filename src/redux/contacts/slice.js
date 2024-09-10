@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact, updateContact } from './operations';
+import { logOut } from '../auth/operations'; // Додайте цей імпорт
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -69,6 +70,9 @@ const contactsSlice = createSlice({
       .addCase(updateContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = []; // Очистіть контакти при виході з системи
       });
   },
 });
