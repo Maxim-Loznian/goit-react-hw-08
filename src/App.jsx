@@ -10,7 +10,7 @@ import ContactsPage from './pages/ContactsPage/ContactsPage';
 import Layout from './components/Layout/Layout';
 import PrivateRoute from './components/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute';
-import styles from './App.module.css'; // Імпортуйте стилі
+import styles from './App.module.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,9 +20,8 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  // Поки йде процес оновлення, можна відобразити завантаження або нічого не показувати
   if (isRefreshing) {
-    return <div>Loading...</div>; // Можете замінити це на компонент завантаження
+    return <div>Loading...</div>; // Можна замінити на більш складний компонент завантаження
   }
 
   return (
